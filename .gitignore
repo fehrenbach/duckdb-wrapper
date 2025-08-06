@@ -1,0 +1,8 @@
+/target/
+**/*.rs.bk
+.devenv
+.devenv.flake.nix
+
+# Added by cargo
+
+/target

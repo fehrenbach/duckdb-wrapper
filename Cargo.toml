@@ -1,0 +1,9 @@
+[package]
+name = "duckdb-wrapper"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+polars-core = "0.49.1"
+polars-io = { version = "0.49.1", features =["json"] }
+duckdb = { version = "1.3.2", features = ["polars"] }
