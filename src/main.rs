@@ -6,6 +6,7 @@ use std::io::{self, Read, Write};
 enum Command {
     Execute,
     Query,
+    Exit,
 }
 
 impl std::str::FromStr for Command {
@@ -15,6 +16,7 @@ impl std::str::FromStr for Command {
         match s {
             "execute" => Ok(Command::Execute),
             "query" => Ok(Command::Query),
+            "" => Ok(Command::Exit),
             _ => Err(format!("Unknown command: {}", s)),
         }
     }
@@ -109,11 +111,11 @@ fn main() {
         // DuckDB/SQL level errors should be handled gracefully by forwarding them to the client.
 
         let command = read_command();
-        let query = read_query();
 
         match command {
-            Command::Execute => handle_execute(&conn, &query),
-            Command::Query => handle_query(&conn, &query),
+            Command::Execute => handle_execute(&conn, &read_query()),
+            Command::Query => handle_query(&conn, &read_query()),
+            Command::Exit => break,
         }
     }
 }
