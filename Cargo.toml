@@ -6,4 +6,4 @@ edition = "2024"
 [dependencies]
 polars-core = "0.49.1"
 polars-io = { version = "0.49.1", features = ["json"] }
-duckdb = { version = "1.4.0", features = ["bundled", "chrono", "extensions-full", "polars"] }
+duckdb = { version = "1.10501.0", features = ["bundled", "chrono", "extensions-full", "polars"] }
